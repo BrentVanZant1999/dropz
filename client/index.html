@@ -30,12 +30,14 @@
    <style>
    #mainMap{ height: 360px;}
    body { background-color: #8ee4af }
-   
+   .cardBody{background-color: #ffffff}
    .groupingScroll{
-    max-height: 180px;
-    margin-bottom: 10px;
-    overflow-y:scroll;
-    -webkit
+		min-height: 360px;
+		max-height: 360px;
+		margin-bottom: 10px;
+		overflow-y:scroll;
+    -webkit}
+	.list-left{    float:left;}
    </style> 
 </head>
  
@@ -45,32 +47,46 @@
 <body>
 
 <main class="mt-5">
-    <div class="container">
-		<section id="map">
-			<div class="card">
+<div class="container">
+    
+    	<div class="card">
+				<h2 class = "text-center">Dropz</h2>
+			<div class = "card-body">
 				<div id="mainMap"></div>
-			</div>
-		</section>
-		
-        <hr class="my-5">
-   
-		<section id="resultList">
-		    <div class = "card"> 
-			<ul class="groupingScroll list-group-flush">
-				<li class="list-group-item">
-					<div class="card text-left">
-						<div class="card-body">
-						<h5 class="card-title">Sample Club Meeting</h5>
-						<p class="card-text"><small>Selected description text.</small></p>
-						<p class="card-text">Description of said event. Could possibly have alot of text in it perhaps? Maybe a lot more than this.</p>
+				<h5 class = "text-center">Results</h5>
+				<ul class="list-group-flush groupingScroll">
+					<li class="list-group-item ">
+						<div class="card text-left">
+							<div class = "card-body">
+								<h5 class="card-title">Sample Club Meeting</h5>
+								<p class="card-text"><small>Selected description text.</small></p>
+								<p class="card-text">Description of said event. Could possibly have alot of text in it perhaps? Maybe a lot more than this.</p>
+							</div>
 						</div>
-					</div>
-				</li>
-			</ul>
-	    </div> 
+					</li>
+					<li class="list-group-item">
+						<div class="card text-left">
+							<div class = "card-body">
+								<h5 class="card-title">Sample Club Meeting</h5>
+								<p class="card-text"><small>Selected description text.</small></p>
+								<p class="card-text">Description of said event. Could possibly have alot of text in it perhaps? Maybe a lot more than this.</p>
+							</div>
+						</div>
+					</li>
+					<li class="list-group-item">
+						<div class="card text-left">
+							<div class = "card-body">
+								<h5 class="card-title">Sample Club Meeting</h5>
+								<p class="card-text"><small>Selected description text.</small></p>
+								<p class="card-text">Description of said event. Could possibly have alot of text in it perhaps? Maybe a lot more than this.</p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+ </div>
 
-        </section>
-    </div>
 </main>
  <!--Setting up test map --> 
  
