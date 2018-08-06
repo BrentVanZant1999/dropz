@@ -28,10 +28,6 @@
    integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
    crossorigin=""></script>
 
- <!-- OSM GEOCODER-->
- <link rel="stylesheet" href="http://k4r573n.github.io/leaflet-control-osm-geocoder/Control.OSMGeocoder.css"/>
- <script  src="Control.OSMGeocoder.js"></script>
-
    <style>
    body {
     padding: 0;
@@ -94,10 +90,43 @@
 }
    </style>
 </head>
+<!--FireBase Initialization -->
+<script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCwq0r3_5ZvGY16N05s4P9Wp1eaMkFvZ6Q",
+    authDomain: "fir-uiauthlearning.firebaseapp.com",
+    databaseURL: "https://fir-uiauthlearning.firebaseio.com",
+    projectId: "fir-uiauthlearning",
+    storageBucket: "fir-uiauthlearning.appspot.com",
+    messagingSenderId: "290389399121"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="https://cdn.firebase.com/libs/firebaseui/3.2.0/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.2.0/firebaseui.css" />
+  <script type="text/javascript">
+    // FirebaseUI config.
+    var uiConfig = {
+      signInSuccessUrl: 'index.html',
+      signInOptions: [
+        // Leave the lines as is for the providers you want to offer your users.
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID
+      ],
+      // Terms of service url.
+      tosUrl: '<your-tos-url>',
+      // Privacy policy url.
+      privacyPolicyUrl: '<your-privacy-policy-url>'
+    };
 
+    // Initialize the FirebaseUI Widget using Firebase.
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    // The start method will wait until the DOM is loaded.
+    ui.start('#firebaseui-auth-container', uiConfig);
+  </script>
 
-<header>
-</header>
 <body>
           <nav class="navbar navbar-dark deep-orange ">
                 <h1 class="navbar-center">Dropz</h1>
@@ -139,7 +168,7 @@
       <!-- Change class .modal-sm to change the size of the modal -->
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
-          <!-- Firbase ui will go in here -->
+          <div id="firebaseui-auth-container"></div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
@@ -148,8 +177,6 @@
   </div>
   <!-- Account login Modal -->
 </body>
-<footer>
-</footer>
 
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 <script>
