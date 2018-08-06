@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<meta charset="utf-8"> 
+<meta charset="utf-8">
 <title> Dropz.io </title>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Laughteres">
 	<!-- Font Awesome -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<!-- Bootstrap core CSS -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Material Design Bootstrap -->
@@ -28,69 +28,70 @@
    integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
    crossorigin=""></script>
    <style>
-   #mainMap{ height: 360px;}
-   body { background-color: #8ee4af }
-   .cardBody{background-color: #ffffff}
-   .groupingScroll{
-		min-height: 360px;
-		max-height: 360px;
-		margin-bottom: 10px;
-		overflow-y:scroll;
-    -webkit}
-	.list-left{    float:left;}
-   </style> 
+   body {
+    padding: 0;
+    margin: 0;
+
+  }
+  html, body, #container {
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+  #mainMap  {
+    width: auto;
+    height: 100%;
+  }
+#button-wrapper {
+    position: relative;
+    margin: 0 auto;
+    width: 95%;
+}
+#main-wrapper {
+    position: absolute;
+    bottom: 5%;
+    margin: 0 auto;
+    width: 100%;
+}
+.btn-circle {
+  position:relative;
+    z-index: 9999;
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+  text-align:center;
+  line-height:200%;
+}
+.btn-left{
+  float:left;
+}
+.btn-right{
+  float:right;
+}
+   </style>
 </head>
- 
+
 
 <header>
 </header>
 <body>
-
-<main class="mt-5">
-<div class="container">
-    
-    	<div class="card">
-				<h2 class = "text-center">Dropz</h2>
-			<div class = "card-body">
-				<div id="mainMap"></div>
-				<h5 class = "text-center">Results</h5>
-				<ul id="ResultsList" class="list-group-flush groupingScroll">
-					<li class="list-group-item ">
-						<div class="card text-left">
-							<div class = "card-body">
-								<h5 class="card-title">Sample Club Meeting</h5>
-								<p class="card-text"><small>Selected description text.</small></p>
-								<p class="card-text">Description of said event. Could possibly have alot of text in it perhaps? Maybe a lot more than this.</p>
-							</div>
-						</div>
-					</li>
-					<li class="list-group-item">
-						<div class="card text-left">
-							<div class = "card-body">
-								<h5 class="card-title">Sample Club Meeting</h5>
-								<p class="card-text"><small>Selected description text.</small></p>
-								<p class="card-text">Description of said event. Could possibly have alot of text in it perhaps? Maybe a lot more than this.</p>
-							</div>
-						</div>
-					</li>
-					<li class="list-group-item">
-						<div class="card text-left">
-							<div class = "card-body">
-								<h5 class="card-title">Sample Club Meeting</h5>
-								<p class="card-text"><small>Selected description text.</small></p>
-								<p class="card-text">Description of said event. Could possibly have alot of text in it perhaps? Maybe a lot more than this.</p>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
- </div>
-
-</main>
- <!--Setting up test map --> 
- 
-  
+          <nav class="navbar navbar-dark deep-orange">
+              <div class="container">
+                <h2>Dropz</h2>
+              </div>
+          </nav>
+          <div id="container">
+            <div id="mainMap"></div>
+            <div id="main-wrapper">
+              <div id="button-wrapper">
+                <span class="btn btn-deep-orange btn-circle btn-left"><i class="fa fa-search fa-lg"></i></span>
+                <span class="btn btn-deep-orange btn-circle btn-right"><i class="fa fa-plus fa-lg"></i></span>
+              </div>
+            </div>
+          </div>
 </body>
 <footer>
 </footer>
@@ -107,7 +108,7 @@
 		accessToken: 'pk.eyJ1IjoiYnZhbnphbnQiLCJhIjoiY2ppZTZhdzh2MDZvazN3bXllOTlmYXc4aCJ9.ipjbP-7psE4EN1sVYotlsQ'
 	}).addTo(mymap);
 	var marker = L.marker([51.5, -0.09]).addTo(mymap);
-	var socket = io();  
+	//var socket = io();
 </script>
 
 </html>
