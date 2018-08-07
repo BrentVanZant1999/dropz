@@ -1,0 +1,14 @@
+body {
+ padding: 0;
+ margin: 0;
+
+}
+html, body, #container {
+height: 100%;
+overflow: hidden;
+width: 100%;
+}
+#mainMap  {
+ width: auto;
+ height: 100%;
+}

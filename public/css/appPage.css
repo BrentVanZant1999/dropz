@@ -1,0 +1,58 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+html, body, #container {
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+#mainMap  {
+  width: auto;
+  height: 100%;
+}
+#bot-button-wrapper {
+  position: relative;
+  margin: 0 auto;
+  width: 95%;
+}
+#main-wrapper {
+  position: absolute;
+  bottom: 5%;
+  margin: 0 auto;
+  width: 100%;
+}
+.btn-circle {
+  position:relative;
+  z-index: 9999;
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  border-radius: 35px;
+  text-align:center;
+  line-height:200%;
+}
+.btn-circle-locate {
+  position:absolute;
+  top: 134px;
+  left: 8px;;
+  z-index: 9999;
+  width: 28px;
+  height: 28px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.2;
+  border-radius: 14px;
+}
+.btn-left{
+  float:left;
+}
+.btn-right{
+  float:right;
+}
+.navbar-center {
+  margin:auto;
+  vertical-align:middle;
+}
