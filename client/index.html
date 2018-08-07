@@ -38,56 +38,56 @@
   height: 100%;
   overflow: hidden;
   width: 100%;
-}
+  }
   #mainMap  {
     width: auto;
     height: 100%;
   }
-#bot-button-wrapper {
+  #bot-button-wrapper {
     position: relative;
     margin: 0 auto;
     width: 95%;
-}
-#main-wrapper {
+  }
+  #main-wrapper {
     position: absolute;
     bottom: 5%;
     margin: 0 auto;
     width: 100%;
-}
-.btn-circle {
-  position:relative;
+  }
+  .btn-circle {
+    position:relative;
     z-index: 9999;
-  width: 70px;
-  height: 70px;
-  padding: 10px 16px;
-  font-size: 24px;
-  border-radius: 35px;
-  text-align:center;
-  line-height:200%;
-}
-.btn-circle-locate {
-  position:absolute;
-  top: 134px;
-  left: 8px;;
-  z-index: 9999;
-  width: 28px;
-  height: 28px;
-  text-align: center;
-  padding: 6px 0;
-  font-size: 12px;
-  line-height: 1.2;
-  border-radius: 14px;
-}
-.btn-left{
-  float:left;
-}
-.btn-right{
-  float:right;
-}
-.navbar-center {
-  margin:auto;
-  vertical-align:middle;
-}
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    font-size: 24px;
+    border-radius: 35px;
+    text-align:center;
+    line-height:200%;
+  }
+  .btn-circle-locate {
+    position:absolute;
+    top: 134px;
+    left: 8px;;
+    z-index: 9999;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.2;
+    border-radius: 14px;
+  }
+  .btn-left{
+    float:left;
+  }
+  .btn-right{
+    float:right;
+  }
+  .navbar-center {
+    margin:auto;
+    vertical-align:middle;
+  }
    </style>
 </head>
 <!--FireBase Initialization -->
@@ -107,73 +107,31 @@
 <script src="https://cdn.firebase.com/libs/firebaseui/3.2.0/firebaseui.js"></script>
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.2.0/firebaseui.css" />
   <script type="text/javascript">
-    // FirebaseUI config.
     var uiConfig = {
-      signInSuccessUrl: '/client/test.html',
+      signInSuccessUrl: 'test.html',
       signInOptions: [
-        // Leave the lines as is for the providers you want to offer your users.
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         firebase.auth.EmailAuthProvider.PROVIDER_ID
       ],
-      // Terms of service url.
-      tosUrl: '<your-tos-url>',
-      // Privacy policy url.
-      privacyPolicyUrl: '<your-privacy-policy-url>'
     };
-
-    // Initialize the FirebaseUI Widget using Firebase.
-    var ui = new firebaseui.auth.AuthUI(firebase.auth());
-    // The start method will wait until the DOM is loaded.
-    ui.start('#firebaseui-auth-container', uiConfig);
+  var ui = new firebaseui.auth.AuthUI(firebase.auth());
+  ui.start('#firebaseui-auth-container', uiConfig);
   </script>
-
 <body>
-          <nav class="navbar navbar-dark deep-orange ">
-                <h1 class="navbar-center">Dropz</h1>
-          </nav>
-          <div id="container">
-            <div id="mainMap"></div>
-            <div id="main-wrapper">
-              <div id="bot-button-wrapper">
-                <span class="btn btn-deep-orange btn-circle btn-left"><i class="fa fa-search fa-lg"></i></span>
-                <span class="btn btn-deep-orange btn-circle btn-right" data-toggle="modal" data-target="#loginModal"><i class="fa fa-user fa-lg"></i></span>
-                <!-- Beocomes <i class="fas fa-pluse"></i> -->
-              </div>
-            </div>
-              <span id="locator" class="btn btn-secondary btn-circle-locate"><i class="fa fa-compass fa-lg"></i></span>
-          </div>
-<!-- Event Creation Modal -->
-<div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
+  <div id="container">
+    <div id="mainMap"></div>
+    <!-- Account Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
 
-    <!-- Change class .modal-sm to change the size of the modal -->
-    <div class="modal-dialog modal-sm" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title w-100" id="myModalLabel">Create Event</h4>
-        </div>
-        <div class="modal-body">
-          Enter Description
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-deep-orange btn-sm">Create Event</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Event Creation Modal -->
-  <!-- Account Login Modal -->
-  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-
-      <!-- Change class .modal-sm to change the size of the modal -->
+        <!-- Change class .modal-sm to change the size of the modal -->
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-              <h2>Sign in</h2>
+          <div class="modal-header justify-content-center ">
+              <h5>Welcome, please sign into Dropz!</h5>
           </div>
           <div id="firebaseui-auth-container"></div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+          <div class="modal-footer ">
+            <span class="lead small">Created by Brent VanZant.</span>
           </div>
         </div>
 
@@ -181,35 +139,21 @@
   </div>
   <!-- Account login Modal -->
 </body>
-
-<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 <script>
 	//clientside Script
-	var mymap = L.map('mainMap').setView([51.505, -0.09], 13);
-	//put a tile layer on the map
+	var mymap = L.map('mainMap').setView([42.36556, -71.054], 17);
 	L.tileLayer('https://api.mapbox.com/styles/v1/bvanzant/cjitaouuo4toq2so62d2nn724/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYnZhbnphbnQiLCJhIjoiY2ppZTZhdzh2MDZvazN3bXllOTlmYXc4aCJ9.ipjbP-7psE4EN1sVYotlsQ', {
 		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-		maxZoom: 18,
+		zoomControl: false,
 		id: 'mapbox.streets',
 		accessToken: 'pk.eyJ1IjoiYnZhbnphbnQiLCJhIjoiY2ppZTZhdzh2MDZvazN3bXllOTlmYXc4aCJ9.ipjbP-7psE4EN1sVYotlsQ'
 	}).addTo(mymap);
-	var marker = L.marker([51.5, -0.09]).addTo(mymap);
-  $('#locator').on('click', function(){
-    mymap.locate({setView: true, maxZoom: 15});
-  });
-  function onLocationFound(e) {
-    var radius = e.accuracy / 2;
-    L.marker(e.latlng).addTo(mymap).on('click', function(){
-          //potential function call here.
-        });
-        //.bindPopup("You are within " + radius + " meters from this point").openPopup();
-    L.circle(e.latlng, radius).addTo(mymap);
-}
-  mymap.on('locationfound', onLocationFound);
-  function onLocationError(e) {
-      alert(e.message);
-    }
-  mymap.on('locationerror', onLocationError);
-</script>
-
+  mymap.dragging.disable();
+  mymap.touchZoom.disable();
+  mymap.doubleClickZoom.disable();
+  mymap.scrollWheelZoom.disable();
+  mymap.boxZoom.disable();
+  mymap.keyboard.disable();
+  $('#loginModal').modal('show')
+  </script>
 </html>

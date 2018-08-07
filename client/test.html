@@ -105,19 +105,18 @@
   firebase.initializeApp(config);
 </script>
 <body>
-          <nav class="navbar navbar-dark deep-orange ">
-                <h1 class="navbar-center">Dropz</h1>
+          <nav class="navbar navbar-dark cyan lighten-3 ">
+                <h1 class="navbar-center text-white">Dropz</h1>
           </nav>
           <div id="container">
-            <div id="mainMap"></div>
+            <div id="mainMap" class="cyan lighten-5"></div>
             <div id="main-wrapper">
               <div id="bot-button-wrapper">
-                <span class="btn btn-deep-orange btn-circle btn-left"><i class="fa fa-search fa-lg"></i></span>
-                <span class="btn btn-deep-orange btn-circle btn-right" data-toggle="modal" data-target="#loginModal"><i class="fa fa-user fa-lg"></i></span>
-                <!-- Beocomes <i class="fas fa-pluse"></i> -->
+                <span class="btn btn-cyan lighten-3 btn-circle btn-left"><i class="fa fa-search fa-lg"></i></span>
+                <span class="btn btn-cyan lighten-3 btn-circle btn-right" data-toggle="modal" data-target="#eventModal"><i class="fa fa-plus fa-lg"></i></span>
               </div>
             </div>
-              <span id="locator" class="btn btn-secondary btn-circle-locate"><i class="fa fa-compass fa-lg"></i></span>
+              <span id="locator" class="btn btn-cyan lighten-3 btn-circle-locate"><i class="fa fa-compass fa-lg"></i></span>
           </div>
 <!-- Event Creation Modal -->
 <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
@@ -133,7 +132,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-deep-orange btn-sm">Create Event</button>
+          <button type="button" class="btn btn-cyan lighten-3 btn-sm">Create Event</button>
         </div>
       </div>
     </div>
@@ -144,31 +143,20 @@
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 <script>
 	//clientside Script
-	var mymap = L.map('mainMap').setView([51.505, -0.09], 13);
+  const locateZoom = 12;
+  const maxMapZoom = 18;
+	var mymap = L.map('mainMap');
 	//put a tile layer on the map
 	L.tileLayer('https://api.mapbox.com/styles/v1/bvanzant/cjitaouuo4toq2so62d2nn724/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYnZhbnphbnQiLCJhIjoiY2ppZTZhdzh2MDZvazN3bXllOTlmYXc4aCJ9.ipjbP-7psE4EN1sVYotlsQ', {
 		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-		maxZoom: 18,
+		maxZoom: maxMapZoom,
 		id: 'mapbox.streets',
 		accessToken: 'pk.eyJ1IjoiYnZhbnphbnQiLCJhIjoiY2ppZTZhdzh2MDZvazN3bXllOTlmYXc4aCJ9.ipjbP-7psE4EN1sVYotlsQ'
 	}).addTo(mymap);
-	var marker = L.marker([51.5, -0.09]).addTo(mymap);
-
+  mymap.locate({setView:true, mapZoom:locateZoom});
   $('#locator').on('click', function(){
-    mymap.locate({setView: true, maxZoom: 15});
+    mymap.locate({setView: true, maxZoom: locateZoom});
   });
-
-  function onLocationFound(e) {
-    var radius = e.accuracy / 2;
-    L.marker(e.latlng).addTo(mymap).on('click', function(){
-          //potential function call here.
-        });
-        //.bindPopup("You are within " + radius + " meters from this point").openPopup();
-    L.circle(e.latlng, radius).addTo(mymap);
-}
-
-  mymap.on('locationfound', onLocationFound);
-
   function onLocationError(e) {
       alert(e.message);
     }

@@ -11,7 +11,7 @@ app.get('/',function(req, res) {
 });
 app.use('/client',express.static(__dirname + '/client'));
 
-app.get('/test', function (req, res) {
+app.get('/test.html', function (req, res) {
  res.sendfile(__dirname + '/client/test.html');
 });
 
