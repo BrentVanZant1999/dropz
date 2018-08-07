@@ -1,20 +1,24 @@
 //app.js
 var DEBUG = true;
-var EVENT_LEN = 120; 
+var EVENT_LEN = 120;
 var MINUTE_LEN = 60;
 var express = require('express');
 var app = express();
 var serv = require('http').Server(app);
- 
+
 app.get('/',function(req, res) {
     res.sendFile(__dirname + '/client/index.html');
 });
 app.use('/client',express.static(__dirname + '/client'));
- 
+
+app.get('/test', function (req, res) {
+ res.sendfile(__dirname + '/client/test.html');
+});
+
 serv.listen(2000);
 console.log("Server started.");
-var connectionCount = 0; 
-var SOCKET_LIST = {}; 
+var connectionCount = 0;
+var SOCKET_LIST = {};
 var Entity = function(){
     var self = {
         lng:250,
@@ -34,7 +38,7 @@ var Entity = function(){
 		if (self.timeSec < 0 )
 		{
 			self.time--;
-			self.timeSec = MINUTE_LEN; 
+			self.timeSec = MINUTE_LEN;
 		}
     }
     return self;
@@ -47,12 +51,12 @@ var EventEntity = function(idInput,nameInput,descriptionInput,typeInput,longitud
 	self.description = descriptionInput;
 	self.type= typeInput;
 	self.lng = longitude;
-	self.lat = latitude; 
+	self.lat = latitude;
     self.lng = longitude;
-	
+
     var super_update = self.update;
     self.update = function(){
-        //potential update functions 
+        //potential update functions
         super_update();
     }
     Event.list[id] = self;
@@ -65,7 +69,7 @@ io.sockets.on('connection', function(socket){
     SOCKET_LIST[connectionCount] = socket;
     socket.id = connectionCount;
 	console.log(socket.id);
-	console.log("Connection Number :"+connectionCount); 
+	console.log("Connection Number :"+connectionCount);
    	connectionCount++;
     socket.on('disconnect',function(){
         console.log("Lost Connection Number :"+socket.id);
@@ -75,9 +79,9 @@ io.sockets.on('connection', function(socket){
 		//user input is the data variable passed into this callback function
     });
 });
- 
-//update events every second. 
-setInterval(function(){   
+
+//update events every second.
+setInterval(function(){
     for(var i in SOCKET_LIST){
 		dataSent = "First trial";
 		socket = SOCKET_LIST[i];

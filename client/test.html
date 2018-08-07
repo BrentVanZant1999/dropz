@@ -104,29 +104,6 @@
   };
   firebase.initializeApp(config);
 </script>
-<script src="https://cdn.firebase.com/libs/firebaseui/3.2.0/firebaseui.js"></script>
-  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.2.0/firebaseui.css" />
-  <script type="text/javascript">
-    // FirebaseUI config.
-    var uiConfig = {
-      signInSuccessUrl: '/client/test.html',
-      signInOptions: [
-        // Leave the lines as is for the providers you want to offer your users.
-        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-        firebase.auth.EmailAuthProvider.PROVIDER_ID
-      ],
-      // Terms of service url.
-      tosUrl: '<your-tos-url>',
-      // Privacy policy url.
-      privacyPolicyUrl: '<your-privacy-policy-url>'
-    };
-
-    // Initialize the FirebaseUI Widget using Firebase.
-    var ui = new firebaseui.auth.AuthUI(firebase.auth());
-    // The start method will wait until the DOM is loaded.
-    ui.start('#firebaseui-auth-container', uiConfig);
-  </script>
-
 <body>
           <nav class="navbar navbar-dark deep-orange ">
                 <h1 class="navbar-center">Dropz</h1>
@@ -162,24 +139,6 @@
     </div>
   </div>
   <!-- Event Creation Modal -->
-  <!-- Account Login Modal -->
-  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-
-      <!-- Change class .modal-sm to change the size of the modal -->
-      <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-              <h2>Sign in</h2>
-          </div>
-          <div id="firebaseui-auth-container"></div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-
-      </div>
-  </div>
-  <!-- Account login Modal -->
 </body>
 
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
@@ -194,9 +153,11 @@
 		accessToken: 'pk.eyJ1IjoiYnZhbnphbnQiLCJhIjoiY2ppZTZhdzh2MDZvazN3bXllOTlmYXc4aCJ9.ipjbP-7psE4EN1sVYotlsQ'
 	}).addTo(mymap);
 	var marker = L.marker([51.5, -0.09]).addTo(mymap);
+
   $('#locator').on('click', function(){
     mymap.locate({setView: true, maxZoom: 15});
   });
+
   function onLocationFound(e) {
     var radius = e.accuracy / 2;
     L.marker(e.latlng).addTo(mymap).on('click', function(){
@@ -205,7 +166,9 @@
         //.bindPopup("You are within " + radius + " meters from this point").openPopup();
     L.circle(e.latlng, radius).addTo(mymap);
 }
+
   mymap.on('locationfound', onLocationFound);
+
   function onLocationError(e) {
       alert(e.message);
     }
