@@ -7,25 +7,25 @@ var inModal = false;
 mymap.on('locationerror', onLocationError);
 mymap.on('locationfound', onLocationfound);
 
-
+var orangeIcon = L.icon({
+    iconUrl: 'css/markerOrangeIcon.png',
+    iconSize:     [40, 53], // size of the icon
+    iconAnchor:   [25, 45], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var pinkIcon = L.icon({
+    iconUrl: 'css/markerPinkIcon.png',
+    iconSize:     [40, 53], // size of the icon
+    iconAnchor:   [25, 45], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
 var marker = L.marker([51.5, -0.09], {
-    draggable:true
+    draggable:true,
+    icon:pinkIcon
 }).addTo(mymap);
 marker.on('dragend', function(event){
-    //alert('drag ended');
     var marker = event.target;
-    var location = marker.getLatLng();
-    console.log(location.lat);
-    console.log(location.lng);
 });
-
-const provider = new OpenStreetMapProvider();
-
-const searchControl = new GeoSearchControl({
-  provider: provider,
-});
-
-mymap.addControl(searchControl);
 
 //put a tile layer on the map
 L.tileLayer('https://api.mapbox.com/styles/v1/bvanzant/cjitaouuo4toq2so62d2nn724/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYnZhbnphbnQiLCJhIjoiY2ppZTZhdzh2MDZvazN3bXllOTlmYXc4aCJ9.ipjbP-7psE4EN1sVYotlsQ', {
@@ -53,7 +53,6 @@ function locateClientUser() {
 }
 function onLocationfound(e){
     marker.setLatLng(e.latlng);
-    console.log("wth");
 }
 function onLocationError(e) {
     alert("Location Database error");
