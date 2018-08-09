@@ -35,52 +35,71 @@
 <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase-database.js"></script>
 
 <script src="js/firebase/initFirebase.js"></script>
-<script src="js/firebase/handleUser.js"></script>
 <body>
   <nav class="navbar navbar-dark cyan lighten-3 ">
     <h1 id="app-header" class="navbar-center text-white">Dropz</h1>
   </nav>
-  <!---
+
   <div id="container">
     <div id="mainMap" class="cyan lighten-5"></div>
     <div id="main-wrapper">
       <div id="bot-button-wrapper">
-        <span class="btn btn-cyan lighten-3 btn-circle btn-left"><i class="fa fa-search fa-lg"></i></span>
-        <span class="btn btn-cyan lighten-3 btn-circle btn-right" data-toggle="modal" data-target="#eventModal"><i class="fa fa-plus fa-lg"></i></span>
+        <span id="searchButton" class="btn btn-cyan lighten-3 btn-circle btn-left"><i class="fa fa-search fa-lg"></i></span>
+        <span id="eventCreateButton" class="btn btn-cyan lighten-3 btn-circle btn-right"><i class="fa fa-plus fa-lg"></i></span>
       </div>
     </div>
     <span id="locator" class="btn btn-cyan lighten-3 btn-circle-locate"><i class="fa fa-compass fa-lg"></i></span>
   </div>
-  <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title w-100" id="myModalLabel">Create Event</h4>
-        </div>
-        <div class="modal-body">
-          Enter Description
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-cyan lighten-3 btn-sm">Create Event</button>
-        </div>
+
+  <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form class="text-center border border-light p-5">
+
+    <p class="h4 mb-4">Create an Event</p>
+    <input type="text" id="titleEventInput" class="form-control mb-2" placeholder="Event name">
+
+    <!-- Email -->
+    <input type="text" id="organizationEventInput" class="form-control mb-2" placeholder="Event organization">
+
+    <!-- Subject -->
+    <div class = "row">
+      <div class = "col col-lg-2 text-center">
+        <h6>Type</h6>
+      </div>
+      <div class = "col">
+        <select id="typeEventInput" class="browser-default custom-select mb-2">
+          <option value="" disabled>Choose option</option>
+          <option value="1" selected>Social</option>
+          <option value="2">Sporting</option>
+          <option value="3">Academic</option>
+          <option value="4">Market</option>
+        </select>
       </div>
     </div>
-  </div>
--->
-    <div>
-      <h>User Name: <span id = "user-name-placement"</p>
+    <div class = "row">
+      <div class = "col col-lg-2  text-center">
+        <h6>Duration</h6>
+      </div>
+      <div class = "col">
+        <input type="number" id="durationEventInput"  class="form-control mb-2"></i>
+        <!-- Message -->
+      </div>
     </div>
-   <div>
-     <p>User Id: <span id = "user-id-placement"</p>
-   </div>
-   <div>
-      <button id ="get-info">Get Info</button>
-   </div>
+    <div class="form-group">
+        <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="2" placeholder="Event description"></textarea>
+    </div>
 
-   <div id="event-info-placement">
-   </div>
+    <!-- Send button -->
+    <button class="btn btn-info btn-block" type="submit">Submit</button>
+
+</form>
+<!-- Default form contact -->
+        </div>
+    </div>
+</div>
+
 
 </body>
-<script src="js/appMapHandling.js"></script>
+<script src="js/mainApp.js"></script>
 </html>
