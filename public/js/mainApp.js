@@ -19,52 +19,35 @@ time:''
 mymap.on('locationerror', onLocationError);
 mymap.on('locationfound', onLocationfound);
 
-var orangeIcon = L.icon({
-    iconUrl: 'css/markerOrangeIcon.png',
-    iconSize:     [40, 53], // size of the icon
-    iconAnchor:   [20, 45], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+var academicIcon = L.icon({
+    iconUrl: 'css/markerAcademic.png',
+    iconSize:     [64, 64], // size of the icon
+    iconAnchor:   [32, 64], // point of the icon which will correspond to marker's location
+    popupAnchor:  [32, 10] // point from which the popup should open relative to the iconAnchor
 });
-var pinkIcon = L.icon({
-    iconUrl: 'css/markerPinkIcon.png',
-    iconSize:     [40, 53], // size of the icon
-    iconAnchor:   [20, 45], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+var marketIcon = L.icon({
+    iconUrl: 'css/markerMarket.png',
+    iconSize:     [64, 64], // size of the icon
+    iconAnchor:   [32, 64], // point of the icon which will correspond to marker's location
+    popupAnchor:  [32, 10] // point from which the popup should open relative to the iconAnchor
 });
-var blueIcon = L.icon({
-    iconUrl: 'css/markerBlueIcon.png',
-    iconSize:     [40, 53], // size of the icon
-    iconAnchor:   [20, 45], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+var socialIcon = L.icon({
+    iconUrl: 'css/markerSocial.png',
+    iconSize:     [64, 64], // size of the icon
+    iconAnchor:   [32, 64], // point of the icon which will correspond to marker's location
+    popupAnchor:  [32, 10] // point from which the popup should open relative to the iconAnchor
 });
-var redIcon = L.icon({
-    iconUrl: 'css/markerRedIcon.png',
-    iconSize:     [40, 53], // size of the icon
-    iconAnchor:   [20, 45], // point of the icon which will correspond to marker's location
-    popupAnchor:  [20, 0] // point from which the popup should open relative to the iconAnchor
+var sportingIcon = L.icon({
+    iconUrl: 'css/markerSporting.png',
+    iconSize:     [64, 64], // size of the icon
+    iconAnchor:   [32, 64], // point of the icon which will correspond to marker's location
+    popupAnchor:  [32, 10] // point from which the popup should open relative to the iconAnchor
 });
-var greenIcon = L.icon({
-    iconUrl: 'css/markerGreenIcon.png',
-    iconSize:     [40, 53], // size of the icon
-    iconAnchor:   [20, 45], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-});
-var purpleIcon = L.icon({
-    iconUrl: 'css/markerPurpleIcon.png',
-    iconSize:     [40, 53], // size of the icon
-    iconAnchor:   [20, 45], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-});
-var yellowIcon = L.icon({
-    iconUrl: 'css/markerYellowIcon.png',
-    iconSize:     [40, 53], // size of the icon
-    iconAnchor:   [20, 45], // point of the icon which will correspond to marker's location
-    popupAnchor:  [20, 0] // point from which the popup should open relative to the iconAnchor
-});
+
 //initiate a user marker with a temporary location
 var userCreateEventMarker = L.marker([0,0], {
     draggable:true,
-    icon:redIcon
+    //todo make create event icon
 }).addTo(markerGroupUI);
 //handle drag events
 userCreateEventMarker.on('dragend', function(event){
@@ -161,7 +144,7 @@ switch(typeIn){
       type: typeIn,
       description: descriptIn,
       time: timeIn,
-      icon: blueIcon
+      icon: socialIcon
     }).addTo(markerGroupEvents);
   }
   break;
@@ -174,7 +157,7 @@ switch(typeIn){
       type: typeIn,
       description: descriptIn,
       time: timeIn,
-      icon: redIcon
+      icon: sportingIcon
     }).addTo(markerGroupEvents);
   }
   break;
@@ -187,7 +170,7 @@ switch(typeIn){
       type: typeIn,
       description: descriptIn,
       time: timeIn,
-      icon: greenIcon
+      icon: academicIcon
     }).addTo(markerGroupEvents);
   }
   break;
@@ -200,7 +183,7 @@ switch(typeIn){
       type: typeIn,
       description: descriptIn,
       time: timeIn,
-      icon: yellowIcon
+      icon: marketIcon
     }).addTo(markerGroupEvents);
   }
   break;
