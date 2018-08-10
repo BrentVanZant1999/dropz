@@ -12,3 +12,11 @@ width: 100%;
  width: auto;
  height: 100%;
 }
+.logo-img{
+  position:absolute;
+  top: 6px;
+  left: 50%;
+  z-index: 9999;
+  width:100px;
+  height:45px;
+}

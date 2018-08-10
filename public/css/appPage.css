@@ -25,7 +25,7 @@ html, body, #container {
 .logo-img{
   position:absolute;
   top: 4px;
-  right: 7px;
+  right: 10px;
   z-index: 9999;
   width:100px;
   height:45px;

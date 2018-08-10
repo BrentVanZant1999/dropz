@@ -53,15 +53,14 @@
     <span id="locator" class="btn btn-cyan lighten-3 btn-circle-locate"><i class="fa fa-compass fa-lg"></i></span>
   </div>
  <img class="logo-img" src="css/dropzLogo.png" alt="logo"></img>
+
+ <!--Modals under here-->
   <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
           <form class="text-center border border-light p-5">
-
     <p class="h4 mb-4">Create an Event</p>
     <input type="text" id="titleEventInput" class="form-control mb-2" placeholder="Event name">
-
-    <!-- Email -->
     <input type="text" id="organizationEventInput" class="form-control mb-2" placeholder="Event organization">
     <div class = "row">
       <div class = "col">
@@ -75,15 +74,13 @@
         </select>
       </div>
       <div class = "col">
-        <h6 class="mb-2" >Duration</h6>
-        <input type="number" id="durationEventInput" class="form-control mb-2" placeholder="Duration">
+        <h6 class="mb-2" >End Time</h6>
+        <input type="time" id="durationEventInput" class="form-control mb-2" placeholder="Duration">
       </div>
     </div>
 
-
     <!-- Send button -->
     <button class="btn btn-info btn-block" type="submit">Submit</button>
-
 </form>
 <!-- Default form contact -->
         </div>
