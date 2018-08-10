@@ -10,18 +10,48 @@ mymap.on('locationfound', onLocationfound);
 var orangeIcon = L.icon({
     iconUrl: 'css/markerOrangeIcon.png',
     iconSize:     [40, 53], // size of the icon
-    iconAnchor:   [25, 45], // point of the icon which will correspond to marker's location
+    iconAnchor:   [20, 45], // point of the icon which will correspond to marker's location
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 var pinkIcon = L.icon({
     iconUrl: 'css/markerPinkIcon.png',
     iconSize:     [40, 53], // size of the icon
-    iconAnchor:   [25, 45], // point of the icon which will correspond to marker's location
+    iconAnchor:   [20, 45], // point of the icon which will correspond to marker's location
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var blueIcon = L.icon({
+    iconUrl: 'css/markerBlueIcon.png',
+    iconSize:     [40, 53], // size of the icon
+    iconAnchor:   [20, 45], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var redIcon = L.icon({
+    iconUrl: 'css/markerRedIcon.png',
+    iconSize:     [40, 53], // size of the icon
+    iconAnchor:   [20, 45], // point of the icon which will correspond to marker's location
+    popupAnchor:  [20, 0] // point from which the popup should open relative to the iconAnchor
+});
+var greenIcon = L.icon({
+    iconUrl: 'css/markerGreenIcon.png',
+    iconSize:     [40, 53], // size of the icon
+    iconAnchor:   [20, 45], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var purpleIcon = L.icon({
+    iconUrl: 'css/markerPurpleIcon.png',
+    iconSize:     [40, 53], // size of the icon
+    iconAnchor:   [20, 45], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var yellowIcon = L.icon({
+    iconUrl: 'css/markerYellowIcon.png',
+    iconSize:     [40, 53], // size of the icon
+    iconAnchor:   [20, 45], // point of the icon which will correspond to marker's location
+    popupAnchor:  [20, 0] // point from which the popup should open relative to the iconAnchor
 });
 var marker = L.marker([51.5, -0.09], {
     draggable:true,
-    icon:pinkIcon
+    icon:redIcon
 }).addTo(mymap);
 marker.on('dragend', function(event){
     var marker = event.target;
