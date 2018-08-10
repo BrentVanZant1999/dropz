@@ -2,7 +2,9 @@
 const locateZoom = 10;
 const maxMapZoom = 18;
 const mymap = L.map('mainMap');
-var inModal = false;
+
+var markerGroupUI = L.layerGroup().addTo(mymap);
+var markerGroupEvents = L.layerGroup().addTo(mymap);
 
 mymap.on('locationerror', onLocationError);
 mymap.on('locationfound', onLocationfound);
@@ -49,12 +51,14 @@ var yellowIcon = L.icon({
     iconAnchor:   [20, 45], // point of the icon which will correspond to marker's location
     popupAnchor:  [20, 0] // point from which the popup should open relative to the iconAnchor
 });
-var marker = L.marker([51.5, -0.09], {
+//initiate a user marker with a temporary location
+var userCreateEventMarker = L.marker([0,0], {
     draggable:true,
     icon:redIcon
-}).addTo(mymap);
-marker.on('dragend', function(event){
-    var marker = event.target;
+}).addTo(markerGroupUI);
+//handle drag events
+userCreateEventMarker.on('dragend', function(event){
+    var userCreateEventMarker = event.target;
 });
 
 //put a tile layer on the map
@@ -82,7 +86,7 @@ function locateClientUser() {
   mymap.locate({setView:true, mapZoom:locateZoom});
 }
 function onLocationfound(e){
-    marker.setLatLng(e.latlng);
+    userCreateEventMarker.setLatLng(e.latlng);
 }
 function onLocationError(e) {
     alert("Location Database error");
@@ -106,8 +110,31 @@ initApp = function() {
 
 function startDatabaseQueries() {
   var myUserId = firebase.auth().currentUser.uid;
+  var recentEvents = firebase.database().ref('posts').limitToLast(100);
+  var fetchPosts = function(postsRef, sectionElement) {
+    postsRef.on('child_added', function(data) {
+      var author = data.val().author || 'Anonymous';
+      var containerElement = sectionElement.getElementsByClassName('posts-container')[0];
+      containerElement.insertBefore(createPostElement(data.key, data.val().title, data.val().body, author, data.val().uid, data.val().authorPic),
+        containerElement.firstChild);
+    });
+    postsRef.on('child_changed', function(data) {
+      var containerElement = sectionElement.getElementsByClassName('posts-container')[0];
+      var postElement = containerElement.getElementsByClassName('post-' + data.key)[0];
+      postElement.getElementsByClassName('mdl-card__title-text')[0].innerText = data.val().title;
+      postElement.getElementsByClassName('username')[0].innerText = data.val().author;
+      postElement.getElementsByClassName('text')[0].innerText = data.val().body;
+      postElement.getElementsByClassName('star-count')[0].innerText = data.val().starCount;
+    });
+  };
 }
 
+function writeUserEvent(userId, email, displayName ) {
+  firebase.database().ref('users/' + userId).set({
+    username: displayName,
+    email: email
+  });
+}
 function writeUserData(userId, email, displayName ) {
   firebase.database().ref('users/' + userId).set({
     username: displayName,

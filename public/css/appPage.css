@@ -22,6 +22,14 @@ html, body, #container {
   margin: 0 auto;
   width: 100%;
 }
+.logo-img{
+  position:absolute;
+  top: 4px;
+  right: 7px;
+  z-index: 9999;
+  width:100px;
+  height:45px;
+}
 .btn-circle {
   position:relative;
   z-index: 9999;
@@ -35,8 +43,8 @@ html, body, #container {
 }
 .btn-circle-locate {
   position:absolute;
-  top: 134px;
-  left: 8px;;
+  top: 70px;
+  left: 7px;
   z-index: 9999;
   width: 28px;
   height: 28px;
