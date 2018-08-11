@@ -2,6 +2,8 @@
 const locateZoom = 18;
 const maxMapZoom = 20;
 const mymap = L.map('mainMap').setView([32.88025,-117.23752],locateZoom);
+
+
 var inModal = false;
 var hasLocation = false;
 var tempLat = 0;
@@ -10,6 +12,9 @@ var tempLng = 0;
 var markerGroupEvents = L.layerGroup().addTo(mymap);
 var markerGroupUI;
 var markerUI;
+
+map.options.minZoom = 8;
+map.options.maxZoom = maxMapZoom;
 
 eventMarker = L.Marker.extend({
   options: {
