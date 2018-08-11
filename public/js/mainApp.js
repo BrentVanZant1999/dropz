@@ -13,7 +13,7 @@ var markerGroupEvents = L.layerGroup().addTo(mymap);
 var markerGroupUI;
 var markerUI;
 
-mymap.options.minZoom = 12;
+mymap.options.minZoom = 14;
 mymap.options.maxZoom = maxMapZoom;
 
 eventMarker = L.Marker.extend({
