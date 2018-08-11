@@ -80,11 +80,25 @@ $('#eventCreateButton').on('click', function(){
       var latLng = markerUI.getLatLng();
       tempLng = latLng.lng;
       tempLat = latLng.lat;
-      console.log(tempLng);
-      console.log(tempLat);
       inModal = true;
       toggleButtons();
     }
+  }
+});
+
+$('#cancelEventCreation').on('click', function(){
+ console.log("exiting");
+  mymap.removeLayer(markerGroupUI);
+  hasLocation=false;
+  inModal=false;
+});
+$('#submitEvent').on('click', function(){
+  console.log("Firing")
+  if (validateEventInput()) {
+    mymap.removeLayer(markerGroupUI);
+    writeUserEvent();
+    hasLocation=false;
+    inModal=false;
   }
 });
 
@@ -134,7 +148,7 @@ function updateEventModal(title,organization,description,type) {
     break;
     case(2):
     {
-      document.getElementById("eventTypePlace").classList.add('fa-basketball-ball');
+      document.getElementById("eventTypePlace").classList.add('fa-volleyball-ball');
     }
     break;
     case(3):
@@ -289,23 +303,40 @@ function validateEventInput() {
 
   if (titleInput.value === ""){
     alert("Event title Needed.");
+    return false;
   }
-  if (orgInput.value === ""){
+  else if (orgInput.value === ""){
     alert("Event organization needed.");
+    return false;
   }
-  if (typeInput.value === ""){
+  else if (typeInput.value === ""){
     alert("Event type needed");
+    return false;
   }
-  if (durationInput == 0){
-    alert("Non zero hour amount needed.")
+  else if (durationInput.value == 0){
+    alert("Non zero hour amount needed.");
+    return false;
   }
+  return true;
 }
 
-function writeUserEvent(userId, email, displayName ) {
-  firebase.database().ref('users/' + userId).set({
-    username: displayName,
-    email: email
-  });
+function writeUserEvent() {
+  var myUserName = firebase.auth().currentUser.displayName;
+  var eventsRef = firebase.database().ref('events');
+  var titleInput = document.getElementById("titleEventInput");
+  var orgInput = document.getElementById("organizationEventInput");
+  var typeInput = document.getElementById("typeEventInput") ;
+  var durationInput = document.getElementById("durationEventInput");
+  var descriptionInput = document.getElementById("descriptionEventInput");
+  eventsRef.push ({
+   title: titleInput.value,
+   owner: myUserName,
+   description: descriptionInput.value,
+   lat: tempLat,
+   lng: tempLng,
+   type: parseInt(typeInput.value),
+   org: orgInput.value
+});
 }
 
 function writeUserData(userId, email, displayName ) {

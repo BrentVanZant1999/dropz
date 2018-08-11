@@ -29,7 +29,6 @@
    crossorigin=""></script>
    <link rel="stylesheet" type="text/css" href="css/loginPage.css">
 </head>
-<!--FireBase Initialization -->
 <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
 <script src="js/firebase/initFirebase.js"></script>
 <script src="https://cdn.firebase.com/libs/firebaseui/3.2.0/firebaseui.js"></script>
@@ -39,10 +38,7 @@
 <body>
   <div id="container">
     <div id="mainMap"></div>
-    <!-- Account Login Modal -->
     <div class="modal fade" id="loginModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
-
-        <!-- Change class .modal-sm to change the size of the modal -->
       <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header justify-content-center ">
@@ -50,13 +46,12 @@
           </div>
           <div id="firebaseui-auth-container"></div>
           <div class="modal-footer ">
-            <span class="lead small">Build 0.1.3</span>
+            <span class="lead small">Current Build: 0.1.3</span>
+            <span class="lead small">Build 0.1.4 will fix event durations.</span>
           </div>
         </div>
-
       </div>
   </div>
-  <!-- Account login Modal -->
 </body>
 <script src="js/initLoginPage.js"></script>
 </html>

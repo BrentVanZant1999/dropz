@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Laughteres">
 	<!-- Font Awesome -->
-  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 	<!-- Bootstrap core CSS -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Material Design Bootstrap -->
@@ -52,9 +52,6 @@
     </div>
     <span id="locator" class="btn unique-color-dark btn-circle-locate"><i class="fa fa-compass fa-lg"></i></span>
   </div>
- <!--<img class="logo-img" src="css/dropzLogo.png" alt="logo"></img>-->
-
- <!--Modals under here-->
   <div class="modal fade" id="eventCreateModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -74,27 +71,26 @@
         </select>
       </div>
       <div class = "col">
-        <h6 class="mb-2" >End Time</h6>
-        <input type="time" id="durationEventInput" class="form-control mb-2" placeholder="Duration">
+        <h6 class="mb-2">Duration</h6>
+        <input type="number"  id="durationEventInput" class="form-control mb-2" placeholder="Duration">
       </div>
     </div>
+    <div class="form-group">
+        <textarea class="form-control rounded-0" id="descriptionEventInput" rows="3" placeholder="Message"></textarea>
+    </div>
+
     <div class = "row">
       <div class = "col">
-        <!--Submit  -->
-        <button id="submitEvent" class="btn btn-info btn-block">Create</button>
+        <button id="cancelEventCreation" class="btn btn-danger btn-block">Cancel</button>
       </div>
       <div class = "col">
-        <!-- Send button -->
-        <button id="cancelEventCreation" class="btn btn-info btn-block">Submit</button>
+        <button id="submitEvent" class="btn btn-info btn-block">Submit</button>
       </div>
     </div>
 </form>
-<!-- Default form contact -->
         </div>
     </div>
 </div>
-
-<!--event info modal -->
 <div class="modal fade right" id="modalEventInfo" tabindex="-1" role="dialog" aria-labelledby="modalEventInfo" aria-hidden="true"  data-backdrop="false">
         <div class="modal-dialog modal-dialog-centered modal-notify modal-info" role="document">
             <div class="modal-content">
@@ -111,14 +107,13 @@
                         </div>
                         <div class="col-9">
                            <p class="small"> Organized by <span id="eventOrganizationPlace">VGDC</span> and ending in 1 hour </p>
-                            <p id="eventInfoDescription"></p>
+                           <p id="eventInfoDescription"></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </body>
 <script src="js/mainApp.js"></script>
 </html>
