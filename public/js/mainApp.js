@@ -1,6 +1,6 @@
 //constants declerations
-const locateZoom = 18;
-const maxMapZoom = 20;
+const locateZoom = 16;
+const maxMapZoom = 18;
 const mymap = L.map('mainMap').setView([32.88025,-117.23752],locateZoom);
 
 
