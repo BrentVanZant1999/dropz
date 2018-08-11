@@ -137,7 +137,7 @@ function updateEventModal(title,organization,description,type) {
   document.getElementById("eventOrganizationPlace").innerHTML = organization;
   document.getElementById("eventInfoDescription").innerHTML = description;
   document.getElementById("eventTypePlace").classList.remove('fa-book');
-  document.getElementById("eventTypePlace").classList.remove('fa-basketball-ball');
+  document.getElementById("eventTypePlace").classList.remove('fa-volleyball-ball');
   document.getElementById("eventTypePlace").classList.remove('fa-tag');
   document.getElementById("eventTypePlace").classList.remove('fa-users');
   switch(type){
