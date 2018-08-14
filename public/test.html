@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title> Dropz.io </title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Laughteres">
+	<!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+	<!--Leaflet core CSS -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+   integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+   crossorigin=""/>
+	<!-- JQuery -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- Leaflet core JavaScript -->
+	 <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+   integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+   crossorigin=""></script>
+   <link rel="stylesheet" type="text/css" href="css/appPage.css">
+
+
+</head>
+<!--FireBase Initialization -->
+<script src="https://www.gstatic.com/firebasejs/5.3.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.3.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.3.1/firebase-database.js"></script>
+
+<script src="js/firebase/initFirebase.js"></script>
+<body>
+
+  <div id="container">
+    <div id="mainMap" class="white"></div>
+    <div id="main-wrapper">
+      <div id="bot-button-wrapper">
+        <span id="eventCancelButton" class="btn unique-color-dark btn-circle btn-left invis"><i class="fa fa-times fa-lg"></i></span>
+        <span id="eventCreateButton" class="btn unique-color-dark btn-circle btn-right"><i id="eventCreateButtonIcon" class="fa fa-plus fa-lg"></i></span>
+      </div>
+    </div>
+    <span id="locator" class="btn unique-color-dark btn-circle-locate"><i class="fa fa-compass fa-lg"></i></span>
+  </div>
+  <div class="modal fade" id="eventCreateModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <form class="text-center border border-light p-5">
+    <p class="h4 mb-4">Create an Event</p>
+    <input type="text" id="titleEventInput" class="form-control mb-2" placeholder="Event name">
+    <input type="text" id="organizationEventInput" class="form-control mb-2" placeholder="Event organization">
+    <div class = "row">
+      <div class = "col">
+        <h6 class="mb-2">Type</h6>
+        <select id="typeEventInput" class="browser-default custom-select mb-2">
+          <option value="" disabled>Event type</option>
+          <option value="1">Social</option>
+          <option value="2">Sporting</option>
+          <option value="3">Academic</option>
+          <option value="4">Market</option>
+        </select>
+      </div>
+      <div class = "col">
+        <h6 class="mb-2">Duration <span class="small">(Hours)</span></h6>
+        <input type="number" id="durationEventInput" class="form-control mb-2" placeholder="Duration">
+      </div>
+    </div>
+    <div class="form-group">
+        <textarea class="form-control rounded-0" id="descriptionEventInput" rows="3" placeholder="Message"></textarea>
+    </div>
+
+    <div class = "row">
+      <div class = "col">
+        <button id="cancelEventCreation" class="btn btn-danger btn-block">Cancel</button>
+      </div>
+      <div class = "col">
+        <button id="submitEvent" class="btn btn-info btn-block">Submit</button>
+      </div>
+    </div>
+</form>
+        </div>
+    </div>
+</div>
+<div class="modal fade right" id="modalEventInfo" tabindex="-1" role="dialog" aria-labelledby="modalEventInfo" aria-hidden="true"  data-backdrop="false">
+        <div class="modal-dialog modal-dialog-centered modal-notify modal-info" role="document">
+            <div class="modal-content">
+                <div class="modal-header unique-color-dark">
+                  <p id="eventTitlePlace" class="heading">Pizza Party</p>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-3">
+                              <p class="text-center"><i id="eventTypePlace" class="fa fa-4x" style="color:#1C2331"></i></p>
+                        </div>
+                        <div class="col-9">
+                           <p class="small"> Organized by <span id="eventOrganizationPlace">VGDC</span> and ending in 1 hour </p>
+                           <p id="eventInfoDescription"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
